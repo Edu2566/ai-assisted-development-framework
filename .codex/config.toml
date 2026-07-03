@@ -1,0 +1,18 @@
+# AI Development Framework v4.3 - Codex runtime configuration
+
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/v1"
+
+[hooks]
+preToolUse = [
+  { matcher = "Bash", hooks = ["~/.codex/hooks/quality-before-commit.sh"] },
+  { matcher = "Edit|Write|apply_patch", hooks = ["~/.codex/hooks/block-sensitive-files.sh", "~/.codex/hooks/plan-phase-write-block.sh"] },
+]
+postToolUse = [
+  { matcher = "Edit|Write|apply_patch", hooks = ["~/.codex/hooks/format-after-edit.sh", "~/.codex/hooks/run-tests-after-edit.sh"] },
+]
+stop = ["~/.codex/hooks/stop-quality-check.sh"]

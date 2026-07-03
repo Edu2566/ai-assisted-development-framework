@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.tasks"
+  short_description: "Generate phased task list from plan and spec for Codex plan tracking"

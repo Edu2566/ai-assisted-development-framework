@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.implement"
+  short_description: "Execute TDD implementation from spec-kit artifacts with quality gates"

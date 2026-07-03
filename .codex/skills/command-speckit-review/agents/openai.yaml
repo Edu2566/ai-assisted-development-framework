@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.review"
+  short_description: "Read-only plan review gate before task generation"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.fix"
+  short_description: "Quick-fix bypass for trivial changes that skip the full SDD workflow"

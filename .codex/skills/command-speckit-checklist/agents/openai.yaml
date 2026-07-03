@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.checklist"
+  short_description: "Generate requirement quality checklists for pre-implementation validation"

@@ -26,6 +26,27 @@ ls -la ~/.claude/
 # mcp.json  → ../dotfiles/claude/.claude/mcp.json
 ```
 
+#### Codex equivalent
+
+```bash
+# Clone the dotfiles repo (or your own fork)
+git clone git@github.com:your-org/dotfiles.git ~/dotfiles
+
+# Place this framework's .codex/ package at ~/dotfiles/codex/.codex/
+# Symlink Codex config into ~/.codex/
+cd ~/dotfiles && stow --ignore='config\.toml' codex
+
+# Verify symlinks
+ls -la ~/.codex/
+# AGENTS.md → ../dotfiles/codex/.codex/AGENTS.md
+# agents/    → ../dotfiles/codex/.codex/agents/
+# hooks/     → ../dotfiles/codex/.codex/hooks/
+# skills/    → ../dotfiles/codex/.codex/skills/
+# rules/     → ../dotfiles/codex/.codex/rules/
+```
+
+Codex keeps machine-local state in `~/.codex/`, including authentication, session history, plugin cache, system skills, and local configuration. The framework should be stowed or merged into the existing `~/.codex/` contents, not copied as `~/.codex/.codex` and not installed by replacing the whole `~/.codex/` directory. Keep `config.toml` machine-local and merge the Codex-specific settings shown below into it.
+
 ### 2️⃣ Create Machine-Local Settings
 
 `settings.json` contains hooks and env vars. It's machine-specific and **not managed by stow**:
@@ -63,18 +84,48 @@ cat > ~/.claude/settings.json << 'EOF'
 EOF
 ```
 
+#### Codex equivalent
+
+Codex uses `~/.codex/config.toml` instead of `settings.json`. The framework's `.codex/` package keeps `AGENTS.md`, skills, rules, hooks, and MCP configuration in Codex-native locations. Slash-style commands such as `/context` and `/speckit.plan` are implemented as `command-*` skills. Use this as a fresh-file example, or merge the sections into an existing `~/.codex/config.toml`:
+
+```bash
+mkdir -p ~/.codex
+
+# Fresh Codex config only. Existing users should merge these settings instead.
+cat > ~/.codex/config.toml << 'EOF'
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/v1"
+
+[hooks]
+preToolUse = [
+  { matcher = "Bash", hooks = ["~/.codex/hooks/quality-before-commit.sh"] },
+  { matcher = "Edit|Write|apply_patch", hooks = ["~/.codex/hooks/block-sensitive-files.sh", "~/.codex/hooks/plan-phase-write-block.sh"] },
+]
+postToolUse = [
+  { matcher = "Edit|Write|apply_patch", hooks = ["~/.codex/hooks/format-after-edit.sh", "~/.codex/hooks/run-tests-after-edit.sh"] },
+]
+stop = ["~/.codex/hooks/stop-quality-check.sh"]
+EOF
+```
+
 > ⚠️ **Important**: The `speckit-helper.sh` permission is required for all spec-kit commands to work. Claude Code blocks `$()`, `||`, and `|` operators in pre-flight commands, so all logic is routed through the helper script.
 
 ### 3️⃣ Verify Installation
 
 ```bash
 cd ~/any-project
-claude
+claude              # or codex
 > /context          # should detect tech stack and structure
 > /speckit.init     # bootstraps .specify/ for spec-driven dev
 ```
 
 After `stow claude`, every new Claude Code session loads the rules, agents, commands, and skills automatically. If you have an existing `~/.claude/` config, back it up first (`mv ~/.claude ~/.claude.backup`); to pick up newly-added files later, restow with `stow -R claude`.
+
+For Codex, start a new `codex` session after merging `.codex/` content and `config.toml` settings. The `.codex/skills/command-*` folders implement the slash-style SDD workflow; Codex does not load Claude slash-command files as native slash commands.
 
 ---
 

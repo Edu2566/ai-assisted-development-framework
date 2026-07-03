@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.specify"
+  short_description: "Generate a feature specification with scenarios, requirements, and success criteria"

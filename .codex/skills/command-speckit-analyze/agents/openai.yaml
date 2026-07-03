@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.analyze"
+  short_description: "Read-only cross-artifact consistency analysis with coverage mapping"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.baseline"
+  short_description: "Reverse-engineer specs from existing code for brownfield projects"

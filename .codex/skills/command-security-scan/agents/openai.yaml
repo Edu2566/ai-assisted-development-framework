@@ -1,0 +1,3 @@
+interface:
+  display_name: "/security-scan"
+  short_description: "Quick security scan of current changes"

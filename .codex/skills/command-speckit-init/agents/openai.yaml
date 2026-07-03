@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.init"
+  short_description: "Bootstrap .specify/ directory for spec-kit SDD workflow in current project"

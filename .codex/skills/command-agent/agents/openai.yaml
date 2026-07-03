@@ -1,0 +1,3 @@
+interface:
+  display_name: "/agent"
+  short_description: "Coordinate a development task with full workflow"

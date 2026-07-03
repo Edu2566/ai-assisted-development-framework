@@ -1,0 +1,3 @@
+interface:
+  display_name: "/speckit.clarify"
+  short_description: "Scan spec for ambiguities and ask targeted clarification questions"
