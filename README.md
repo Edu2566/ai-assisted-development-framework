@@ -86,7 +86,7 @@ EOF
 
 #### Codex equivalent
 
-Codex uses `~/.codex/config.toml` instead of `settings.json`. The framework's `.codex/` package keeps `AGENTS.md`, skills, rules, hooks, and MCP configuration in Codex-native locations. Slash-style commands such as `/context` and `/speckit.plan` are implemented as `command-*` skills. Use this as a fresh-file example, or merge the sections into an existing `~/.codex/config.toml`:
+Codex uses `~/.codex/config.toml` instead of `settings.json`. The framework's `.codex/` package keeps `AGENTS.md`, skills, rules, hooks, and MCP configuration in Codex-native locations. Slash-style commands such as `/map-context` and `/speckit.plan` are implemented as `command-*` skills. Use this as a fresh-file example, or merge the sections into an existing `~/.codex/config.toml`:
 
 ```bash
 mkdir -p ~/.codex
@@ -119,7 +119,7 @@ EOF
 ```bash
 cd ~/any-project
 claude              # or codex
-> /context          # should detect tech stack and structure
+> /map-context      # should detect tech stack and structure
 > /speckit.init     # bootstraps .specify/ for spec-driven dev
 ```
 
@@ -182,7 +182,7 @@ The triviality gate ensures only genuinely trivial changes bypass the full pipel
 The full spec-driven development pipeline from idea to implementation:
 
 ```
-/context              → 🧭 orient (detect stack, tools, structure)
+/map-context          → 🧭 orient (detect stack, tools, structure)
 /speckit.init         → 🏗️ bootstrap (once per project)
 /speckit.constitution → 📜 define principles (once per project)
 /speckit.brainstorm   → 💡 Socratic design exploration (refine the idea) ← NEW
@@ -447,7 +447,7 @@ The two new skills enforce **Iron Laws** — non-negotiable rules that prevent f
 | Command | Args | Description |
 |---------|------|-------------|
 | `/agent` | `<task>` | Start full development workflow with planning and task tracking |
-| `/context` | — | Analyze project tech stack, tools, and structure |
+| `/map-context` | — | Analyze project tech stack, tools, and structure |
 | `/pr-summary` | — | Generate PR description from current branch diff |
 | `/quality` | — | Run comprehensive quality checks (spawns quality-guardian) |
 | `/security-scan` | — | Scan staged changes for secrets, SQLi, XSS |

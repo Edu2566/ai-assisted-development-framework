@@ -1,3 +1,3 @@
 interface:
-  display_name: "/context"
+  display_name: "/map-context"
   short_description: "Refresh project context analysis"

@@ -45,7 +45,7 @@ For general tasks, use Codex's built-in repository exploration, planning, implem
 - Use `rg`/file search to find similar implementations.
 - Use shell commands only for system commands and terminal operations.
 - For complex features, plan first and get user approval before broad implementation.
-- For slash-style commands, use the mirrored `command-*` skills. Examples: `/context` -> `command-context`, `/quality` -> `command-quality`, `/speckit.plan` -> `command-speckit-plan`.
+- For slash-style commands, use the mirrored `command-*` skills. Examples: `/map-context` -> `command-map-context`, `/quality` -> `command-quality`, `/speckit.plan` -> `command-speckit-plan`.
 - For spec-driven development (SDD), use the command skills for: init, brainstorm, specify, plan, review, tasks, implement.
 - For trivial changes (typos, config), use the `speckit.fix` recipe to bypass the full pipeline.
 - For brownfield projects, use the `speckit.baseline` recipe to reverse-engineer specs from existing code.

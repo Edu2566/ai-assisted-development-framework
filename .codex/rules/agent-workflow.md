@@ -23,7 +23,7 @@ Move sessions between surfaces:
 ## Phase 1: Planning & Context (Steps 1-4)
 
 ### Step 1: Context Preparation
-- Use repository search plus the `context-analysis` skill or `/context` via the `command-context` skill for project analysis
+- Use repository search plus the `context-analysis` skill or `/map-context` via the `command-map-context` skill for project analysis
 - Auto-detect tech stack from `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`
 - Identify existing patterns, conventions, and quality tools
 - Use `ultrathink` for complex architectural analysis or ambiguous requirements

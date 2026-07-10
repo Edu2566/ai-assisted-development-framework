@@ -1,18 +1,18 @@
 ---
-name: command-context
+name: command-map-context
 description: |
-  Implements the `/context` slash-style command for Codex. Use when the user types `/context`, asks to run the `context` command, or wants the AI Development Framework workflow: Refresh project context analysis.
+  Implements the `/map-context` slash-style command for Codex. Use when the user types `/map-context`, asks to run the `map-context` command, or wants the AI Development Framework workflow: Refresh project context analysis.
 ---
 
-# /context Command
+# /map-context Command
 
 Execute this skill as the Codex-native slash-style command implementation.
 
 ## Codex Execution Rules
 
 - Read this entire skill before acting.
-- Treat `/context` as a command invocation, not as ordinary prose.
-- If the user provides text after `/context`, treat it as command input and apply it wherever the recipe asks for user intent.
+- Treat `/map-context` as a command invocation, not as ordinary prose.
+- If the user provides text after `/map-context`, treat it as command input and apply it wherever the recipe asks for user intent.
 - Follow the command recipe below exactly unless a higher-priority instruction conflicts.
 - When the recipe contains Claude command interpolation syntax like ``!`command` ``, run the shell command inside the backticks from the current project root and use its output as live input for that section.
 - If a `~/.codex/hooks/speckit-helper.sh ...` helper command fails or returns a missing-artifact marker, report the missing prerequisite and follow the recipe's recovery guidance.
